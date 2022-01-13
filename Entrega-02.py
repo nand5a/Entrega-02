@@ -1,15 +1,54 @@
 print("\n Bem-vindo ao menu de gerenciamento!\n")
 esc = int(input('Digite 1 para criar um ônibus: '))
 
-a = True
-b = False
+class Onibus:
+
+    def __init__(self, nome, parada, motorista, fiscal):
+        self.nome = nome
+        self.parada = parada
+        self.motorista = motorista
+        self.fiscal = fiscal
+        
+    def __str__(self):
+        return f" Nome do ônibus: {self.nome} \
+            \n Rota: {self.parada} \
+            \n Motorista: {self.motorista} \
+            \n Fiscal: {self.fiscal}" 
+
+class Motorista:
+    def __init__(self, nomeMot, idade, cpf):
+        self.nomeMot = nomeMot
+        self.idade = idade
+        self.cpf = cpf
+
+    def __str__(self):
+            return f" Nome do motorista: {self.nomeMot} \
+                \n Idade: {self.idade} \
+                \n CPF: {self.cpf} "
+
+class Fiscal:
+    def __init__(self, nomeFis, idade, cpf):
+        self.nomeFis = nomeFis
+        self.idade = idade
+        self.cpf = cpf
+
+    def __str__(self):
+            return f" Nome do fiscal: {self.nomeFis} \
+                \n Idade: {self.idade} \
+                \n CPF: {self.cpf} "
+    
+
+loop1 = True
+loop2 = False
 ListaOnibus = []
 ListaMotoristas = []
 ListaFiscais = []
 
-while a == True:
 
-    while b == True:
+
+while loop1 == True:
+
+    while loop2 == True:
         print('\n O que deseja fazer agora?\
         \n 1 - Criar um ônibus \
         \n 2 - Mostrar ônibus \
@@ -20,21 +59,7 @@ while a == True:
 
         esc = int(input('Escolha uma das opções para continuar: '))
         
-        b = False
-
-    class Onibus:
-
-        def __init__(self, nome, parada, motorista, fiscal):
-            self.nome = nome
-            self.parada = parada
-            self.motorista = motorista
-            self.fiscal = fiscal
-        
-        def __str__(self):
-            return f" Nome do ônibus: {self.nome} \
-                \n Rota: {self.parada} \
-                \n Motorista: {self.motorista} \
-                \n Fiscal: {self.fiscal}" 
+        loop2 = False
 
     if (esc == 1): 
         #Criar um ônibus com ponto de parada, motorista e fiscal, 
@@ -51,7 +76,7 @@ while a == True:
 
         print('\n Ônibus criado!')
 
-        b = True
+        loop2 = True
 
     if (esc == 2): 
     #Mostra o ônibus, sua rota, seu motorista e seu fiscal
@@ -66,19 +91,8 @@ while a == True:
         if tamanho == 0:
             print('Não há nenhum ônibus cadastrado.')
 
-        b = True      
+        loop2 = True      
 
-    class Motorista:
-        def __init__(self, nomeMot, idade, cpf):
-            self.nomeMot = nomeMot
-            self.idade = idade
-            self.cpf = cpf
-
-        def __str__(self):
-                return f" Nome do motorista: {self.nomeMot} \
-                    \n Idade: {self.idade} \
-                    \n CPF: {self.cpf} "
-    
     if (esc == 3): 
         #Altera dados do Motorista
         
@@ -101,18 +115,7 @@ while a == True:
 
         print('\n Os dados do motorista', onb.motorista, 'foram alterados!')  
 
-        b = True 
-
-    class Fiscal:
-        def __init__(self, nomeFis, idade, cpf):
-            self.nomeFis = nomeFis
-            self.idade = idade
-            self.cpf = cpf
-
-        def __str__(self):
-                return f" Nome do fiscal: {self.nomeFis} \
-                    \n Idade: {self.idade} \
-                    \n CPF: {self.cpf} "
+        loop2 = True 
 
     if (esc == 4): 
         #Altera dados do Fiscal
@@ -136,23 +139,24 @@ while a == True:
 
         print('\n Os dados do fiscal foram alterados!')
 
-        b = True 
+        loop2 = True 
 
     if (esc == 5):
     #Altera rota do ônibus
-
         onb = Onibus(nome, parada, motorista, fiscal)    
 
         print('\n O ponto de parada do ônibus', onb.nome, 'é: ', onb.parada)
 
         print('\n')        
-        onb.parada = str(input('Nova parada:'))
+        NovaParada = str(input('Nova parada:'))
         print('\n')
+
+        onb.parada = NovaParada
 
         print('Local de parada atualizado para: ', onb.parada, '.')
 
-        b = True
-
+        loop2 = True
+        
     if (esc == 6):
         #Deleta ônibus
 
@@ -160,5 +164,4 @@ while a == True:
 
         print('O ônibus foi deletado')
 
-        b = True
-
+        loop2 = True
